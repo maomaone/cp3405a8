@@ -7,10 +7,18 @@ from pymongo import MongoClient
 from werkzeug.security import generate_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
+#MLABURI="mongodb://cp3405a8:cp3405a82018@ds133221.mlab.com:33221/cp3405a8"
+#MLABDB="cp3405a8"
 
+#create a sandbox mongoDB on mlab (this one is named michael-mongo)
+MLABDB="michael-mongo"
+# create a user on the mongodb you created and use the login pass to access the DB
+MLABURI="mongodb://herokutest:Takeal00k@ds139675.mlab.com:39675/michael-mongo"
 
-client = MongoClient("mongodb://cp3405a8:cp3405a82018@ds133221.mlab.com:33221/cp3405a8")
-collection = client["cp3405a8"].cp3405a8
+client = MongoClient(MLABURI)
+#create a collection in your mongoDB. this one is named: herokudb
+#please place the name of your collection below
+collection = client[MLABDB].herokudb
 
 login_manager = LoginManager()
 login_manager.init_app(app)
